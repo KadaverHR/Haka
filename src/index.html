@@ -1,4 +1,4 @@
-{% set title = "Натуральная фермерская " %}
+{% set title = "Прохождение" %}
 {% set bodyClass = "is-main" %}
 
 {% extends "html/layouts/default.html" %}
@@ -8,10 +8,43 @@
 
 <section>
 	<div class="container">
-		<div style="display: grid;">
-			<div class="haka__box">
+		<div class="all-box">
+			<div class="haka__box  d-n">
 
 			</div>
+
+
+			<div class="form__box">
+				<form class="form" id="settingMap" action="/apply/" method="POST">
+					<label for="miniboss">
+						<p class="form__text">Мини-босс 2/2</p>
+						<input id="miniboss" value="6" type="number">
+					</label>
+
+					<label for="boss">
+						<p class="form__text">Босс 5/5</p>
+						<input id="boss" value="6" type="number">
+					</label>
+					<label for="stone">
+						<p class="form__text">Валун</p>
+						<input id="stone" value="6" type="number">
+					</label>
+					<button type="submit">
+						Сохранить настройки
+					</button>
+				</form>
+
+			</div>
+
+			
+				<button class="reset" id="reset">
+					Сбросить настройки
+				</button>
+
+				<a class="instructions-link" href="instructions.html">
+					Инструкции
+				</a>
+			
 		</div>
 	</div>
 </section>

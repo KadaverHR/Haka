@@ -2,29 +2,14 @@
   box-sizing: border-box
 
 .container
-  max-width: 1920px
-  padding-left: 108px
-  padding-right: 108px
+  max-width: 576px
   margin-left: auto
   margin-right: auto
   min-width: 320px
-  @media all and ($xl)
-    padding-left: 100px
-    padding-right: 100px
-  @media all and ($l)
-    padding-left: 36px
-    padding-right: 36px
-  @media all and ($m)
-    padding-left: 20px
-    padding-right: 20px
-  @media all and ($s)
-    padding-left: 20px
-    padding-right: 20px
-  @media all and ($xs)
-    padding-left: 16px
-    padding-right: 16px
-  &.grid
-    display: grid
+  padding-left: 16px
+  padding-right: 16px
+  display: grid
+  justify-content: center
 
 body
   font-family: $Int
@@ -32,6 +17,7 @@ body
   margin: 0
   min-height: 100vh
   position: relative
+  background: #F8E9E9
 
 ul
   list-style-type: none
@@ -63,14 +49,6 @@ button
 img
   max-width: 100%
 
-.title
-  color: $gray-darken-3
-  font-family: $Int
-  font-size: 48px
-  font-weight: 500
-  @media all and ($m)
-    font-size: 24px
-
 section
   margin-bottom: 112px
   // overflow: hidden
@@ -80,28 +58,76 @@ section
 .d-n
   display: none !important
 
+.all-box
+  display: grid
+  gap: 20px
+  padding-top: 25px
+  justify-content: stretch
+
+.form
+  display: grid
+  gap: 15px
+  justify-content: center
+  &__text
+    font-size: 20px
+    font-weight: 500
+    color: #6C5151
+  input
+    padding: 5px 10px
+    min-height: 40px
+    border: 2px solid #6C5151
+    border-radius: 15px
+    color: #6C5151
+    background: #F8E9E9
+    &::-webkit-inner-spin-button, &::-webkit-outer-spin-button
+      -webkit-appearance: none
+      margin: 0
+  button
+    background: #6C5151
+    border-radius: 15px
+    padding: 5px 5px
+    min-height: 40px
+    color: #fff
+
+.reset
+  text-align: center
+  display: grid
+  text-decoration: underline
+  color: #6C5151
+
 .haka
   display: none
   &__box
     display: grid
     grid-template-columns: repeat(5, 1fr)
-    gap: 3px
-    justify-content: center
-    justify-items: center
-    justify-self: center
+    gap: 10px
+    border-radius: 9px
+    padding: 40px 30px
+    background: url(/assets/img/back2.jpg)
+    justify-content: stretch
+    width: 360px
+    height: 464px
+    background-size: cover
+    background-position: center center
+    box-shadow: 0 8px 16px 0 rgba(104, 73, 78, 0.8)
   &__block
-    width: 70px
-    height: 70px
-    border: 1px solid #6C5151
-    background: #6C5151
+    width: calc((360px - 60px - 40px) / 5)
+    height: calc((464px - 80px - 70px) / 8)
+    background: #F7E6CB
+    border: 1px solid #F7E6CB
+    box-shadow: inset 7px -6px 4px 0 rgba(0, 0, 0, 0.25), -3px 6px 4px 0 rgba(0, 0, 0, 0.25), inset -4px 4px 4px 0 rgba(0, 0, 0, 0.25)
     border-radius: 10px
     cursor: pointer
     display: grid
     align-items: center
     justify-content: center
     &:disabled
-      background: #E4D0D0
-      border: 1px solid #E4D0D0
+      background: #DDA576
+      border: 1px solid #DDA576
+
+    &.disabled
+      background: #DDA576
+      border: 1px solid #DDA576
       position: relative
       &::after
         position: absolute
@@ -115,9 +141,87 @@ section
         background-repeat: no-repeat
         background-position: center center
         background-size: cover
-
+    &.kill
+      .haka
+        opacity: 0 !important
     &.open
-      background: #E4D0D0
-      border: 1px solid #E4D0D0
+      background: transparent
+      border: none
+      box-shadow: none
       .haka
         display: block
+        img
+          width: 100%
+    &:nth-child(36)
+      background: url(/assets/img/start.jpg)
+      border: 0
+      box-shadow: none
+      background-size: cover
+      &::after
+        opacity: 0
+    .start
+      display: block
+
+.instructions-link
+  border: 2px solid #6C5151
+  border-radius: 15px
+  padding: 5px 5px
+  min-height: 40px
+  color: #6C5151
+  display: grid
+  align-items: center
+  justify-content: center
+
+.instructions
+  padding-top: 40px
+  padding-bottom: 40px
+  &__block
+    margin-bottom: 20px
+  &__title
+    display: grid
+    justify-content: center
+    margin-bottom: 20px
+    font-size: 30px
+    color: #6C5151
+  &__img
+    width: 100%
+    display: flex
+    border-radius: 15px 15px 0 0
+  &__color-box
+    display: grid
+    grid-template-columns: 1fr
+    gap: 15px
+    justify-items: center
+    justify-content: center
+    align-items: center
+    background: #dda57685
+    border: 3px solid #67484D
+    padding-top: 20px
+    padding-bottom: 20px
+    border-radius: 0 0 15px 15px
+    border-top: 0
+    &.bottom
+      border: 3px solid #67484D
+      border-radius: 15px
+      padding: 20px
+      li
+        display: grid
+        grid-template-columns: repeat(2,auto)
+        gap: 10px
+        .number
+          font-size: 36px
+          color: #67484D
+  &__color
+    border-radius: 5px
+    width: 30px
+    height: 10px
+    color: #fff
+    &.green
+      background: #2CA02A
+    &.yellow
+      background: #FFEC9A
+    &.red
+      background: #F8271B
+  &__color-text
+    color: #6C5151
+    font-size: 20px
