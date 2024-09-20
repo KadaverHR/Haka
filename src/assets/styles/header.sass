@@ -18,9 +18,56 @@
   &__logo
     justify-self: center
     grid-column: 2/3
-  &__simulator
-    font-size: 14px
-    font-family: $B
+.catalog-button
+  justify-self: start
+.catalog-mobile
+  &__logo-close
+    background: none
+    position: absolute
+    right: 0
+    top: 0
+    img
+      width: 35px
+      height: 35px
+  &__container
+    position: fixed
+    align-content: start
+    left: 0px
+    top: 0
+    width: fit-content
+    height: 100vh
+    z-index: 100
+    padding-top: 15px
+    box-shadow: 4px 1px 4px 0 rgba(0, 0, 0, 0.25)
+    background: #222
+    display: grid
+    gap: 40px
+    overflow-y: auto
+    visibility: hidden
+    transform: translateX(-120%)
+    transition: visibility 0.3s ease-in-out, transform 0.3s ease-in-out
+    padding-bottom: 66px
+  &__container-box
+    display: grid
+    gap: 40px
+  &__navigation
+    padding-top: 70px
+    display: grid
+    gap: 20px
+    padding-left: 20px
+  &__position
+    position: relative
+    & div[data-tippy-root]
+      position: absolute !important
+      left: 50% !important
+      top: 50% !important
+      transform: translate(-50%,-50%) !important
+      min-width: 320px
+      max-width: fit-content
+  &__container.active
+    visibility: visible
+    transform: none
+  &__menu-link
+    font-size: 25px
     color: #F8E9E9
-    justify-self: end
-    text-align: end
+    font-family: "Boxtoon"
