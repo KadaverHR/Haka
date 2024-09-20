@@ -7,7 +7,7 @@
   <title>Пещера Лавы - симулятор</title>
   <meta name="description" content="{{ meta_description }}">
 
-
+  <link rel="shortcut icon" href="assets/img/favicon.svg" type="image/x-icon">
 
   <link rel="stylesheet" type="text/css" href="assets/css/main.min.css">
 
@@ -43,7 +43,7 @@
 
 <body {% if bodyClass %}class="{{ bodyClass }}" {% endif %} id="body">
 
-
+  {% include "html/includes/header.html" %}
 
   {% block content %}{% endblock %}
 

@@ -2,18 +2,34 @@
   box-sizing: border-box
 
 .container
-  max-width: 576px
+  max-width: 1920px
+  padding-left: 108px
+  padding-right: 108px
   margin-left: auto
   margin-right: auto
   min-width: 320px
-  padding-left: 16px
-  padding-right: 16px
-  display: grid
-  justify-content: center
+  @media all and ($xl)
+    padding-left: 100px
+    padding-right: 100px
+  @media all and ($l)
+    padding-left: 36px
+    padding-right: 36px
+  @media all and ($m)
+    padding-left: 20px
+    padding-right: 20px
+  @media all and ($s)
+    padding-left: 20px
+    padding-right: 20px
+  @media all and ($xs)
+    padding-left: 16px
+    padding-right: 16px
+  &.grid
+    display: grid
 
 body
-  font-family: $Int
+  font-family: "Machina", sans-serif
   line-height: normal
+  font-weight: 300
   margin: 0
   min-height: 100vh
   position: relative
@@ -51,9 +67,7 @@ img
 
 section
   margin-bottom: 112px
-  // overflow: hidden
-  @media all and ($m)
-    margin-bottom: 72px
+  margin-top: 60px
 
 .d-n
   display: none !important
@@ -63,6 +77,8 @@ section
   gap: 20px
   padding-top: 25px
   justify-content: stretch
+  max-width: 576px
+  margin: 0 auto
 
 .form
   display: grid
@@ -72,6 +88,12 @@ section
     font-size: 20px
     font-weight: 500
     color: #6C5151
+  &__submit
+    background: #6C5151
+    border-radius: 15px
+    padding: 5px 5px
+    min-height: 40px
+    color: #fff
   input
     padding: 5px 10px
     min-height: 40px
@@ -82,12 +104,6 @@ section
     &::-webkit-inner-spin-button, &::-webkit-outer-spin-button
       -webkit-appearance: none
       margin: 0
-  button
-    background: #6C5151
-    border-radius: 15px
-    padding: 5px 5px
-    min-height: 40px
-    color: #fff
 
 .reset
   text-align: center
@@ -98,6 +114,7 @@ section
 .haka
   display: none
   &__box
+    margin: 0 auto
     display: grid
     grid-template-columns: repeat(5, 1fr)
     gap: 10px

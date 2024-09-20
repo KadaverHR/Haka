@@ -224,6 +224,7 @@ $(document).ready(function () {
         console.log(this.disabled)
 
         this.classList.add('open')
+
         if (topBlock && (!topBlock.classList.contains('disabled')) && (!(this.getAttribute('atr') == '0')) && (!(this.getAttribute('atr') == '1')) && (!(this.getAttribute('atr') == '2')) && (!(this.getAttribute('atr') == '3')) && (!(this.getAttribute('atr') == '4'))) {
           topBlock.disabled = false
         }
@@ -244,7 +245,7 @@ $(document).ready(function () {
       if ((openHaka.getAttribute('value') == 'block') && (!this.classList.contains('open')) && (!this.disabled)) {
         this.classList.add('open')
         this.setAttribute('kill', 1)
-        console.log(this.getAttribute('kill'))
+
 
         if (topBlock && (!topBlock.classList.contains('disabled')) && (!(this.getAttribute('atr') == '0')) && (!(this.getAttribute('atr') == '1')) && (!(this.getAttribute('atr') == '2')) && (!(this.getAttribute('atr') == '3')) && (!(this.getAttribute('atr') == '4'))) {
           topBlock.disabled = false
@@ -296,7 +297,7 @@ $(document).ready(function () {
 
         //верх диз
         if (top && (!top.classList.contains('open')) && (!(top.getAttribute('atr') == '0')) && (!(top.getAttribute('atr') == '1')) && (!(top.getAttribute('atr') == '2')) && (!(top.getAttribute('atr') == '3')) && (!(top.getAttribute('atr') == '4'))) {
-          clickBlock = 0
+
           clickBlock = Number(top.getAttribute('clickBlock')) + Number(1)
           top.setAttribute('clickBlock', clickBlock)
           top.classList.add('disabled')
@@ -307,7 +308,7 @@ $(document).ready(function () {
         //низ диз
         if (bot && (!bot.classList.contains('open')) && (!(bot.getAttribute('atr') == '35')) && (!(bot.getAttribute('atr') == '36')) && (!(bot.getAttribute('atr') == '37')) && (!(bot.getAttribute('atr') == '38')) && (!(bot.getAttribute('atr') == '39'))) {
 
-          clickBlock = 0
+
           clickBlock = Number(bot.getAttribute('clickBlock')) + Number(1)
           bot.setAttribute('clickBlock', clickBlock)
           bot.classList.add('disabled')
@@ -321,11 +322,40 @@ $(document).ready(function () {
 
 
 
+
+
         $(parant).on('click', '.open', function () {
 
           if (this.classList.contains('open') && (this.getAttribute('kill') == '1')) {
+
             this.classList.add('kill')
             this.setAttribute('kill', 2)
+
+            let parant2 = this.parentElement
+            let allbtns2 = parant2.querySelectorAll('.haka__block')
+            let open1 = Number(this.getAttribute('atr')) - 5
+            let open2 = Number(this.getAttribute('atr')) + 5
+            let open3 = Number(this.getAttribute('atr')) + 1
+            let open4 = Number(this.getAttribute('atr')) - 1
+
+
+            let topBlock = allbtns2[open1]
+            let bottomBlock = allbtns2[open2]
+            let rightBlock = allbtns2[open3]
+            let leftBlock = allbtns2[open4]
+
+            if (topBlock && (!(this.getAttribute('atr') == '0')) && (!(this.getAttribute('atr') == '1')) && (!(this.getAttribute('atr') == '2')) && (!(this.getAttribute('atr') == '3')) && (!(this.getAttribute('atr') == '4'))) {
+              topBlock.disabled = false
+            }
+            if (bottomBlock && (!(this.getAttribute('atr') == '35')) && (!(this.getAttribute('atr') == '36')) && (!(this.getAttribute('atr') == '37')) && (!(this.getAttribute('atr') == '38')) && (!(this.getAttribute('atr') == '39'))) {
+              bottomBlock.disabled = false
+            }
+            if (rightBlock && (!(this.getAttribute('atr') == '4')) && (!(this.getAttribute('atr') == '9')) && (!(this.getAttribute('atr') == '14')) && (!(this.getAttribute('atr') == '19')) && (!(this.getAttribute('atr') == '24')) && (!(this.getAttribute('atr') == '29')) && (!(this.getAttribute('atr') == '34')) && (!(this.getAttribute('atr') == '39'))) {
+              rightBlock.disabled = false
+            }
+            if (leftBlock && (!(this.getAttribute('atr') == '0')) && (!(this.getAttribute('atr') == '5')) && (!(this.getAttribute('atr') == '10')) && (!(this.getAttribute('atr') == '15')) && (!(this.getAttribute('atr') == '20')) && (!(this.getAttribute('atr') == '25')) && (!(this.getAttribute('atr') == '30'))) {
+              leftBlock.disabled = false
+            }
 
 
             if (this.previousElementSibling && (!this.previousElementSibling.classList.contains('open')) && (!(this.getAttribute('atr') == '5')) && (!(this.getAttribute('atr') == '10')) && (!(this.getAttribute('atr') == '15')) && (!(this.getAttribute('atr') == '20')) && (!(this.getAttribute('atr') == '25')) && (!(this.getAttribute('atr') == '30'))) {
@@ -333,7 +363,7 @@ $(document).ready(function () {
 
               minus = Number(this.previousElementSibling.getAttribute('clickBlock')) - Number(1)
               this.previousElementSibling.setAttribute('clickBlock', minus)
-              console.log(minus, "Z nen")
+              console.log(minus, "я тут слева")
               if (minus == 0) {
                 this.previousElementSibling.classList.remove('disabled')
               }
@@ -343,9 +373,10 @@ $(document).ready(function () {
 
 
             if (this.nextElementSibling && (!this.nextElementSibling.classList.contains('open')) && (!(this.getAttribute('atr') == '4')) && (!(this.getAttribute('atr') == '9')) && (!(this.getAttribute('atr') == '14')) && (!(this.getAttribute('atr') == '19')) && (!(this.getAttribute('atr') == '24')) && (!(this.getAttribute('atr') == '29')) && (!(this.getAttribute('atr') == '40'))) {
-              minus = 0
+
               minus = Number(this.nextElementSibling.getAttribute('clickBlock')) - Number(1)
               this.nextElementSibling.setAttribute('clickBlock', minus)
+              console.log(minus, "я тут справа")
               if (minus == 0) {
                 this.nextElementSibling.classList.remove('disabled')
               }
@@ -358,7 +389,7 @@ $(document).ready(function () {
             let count1 = Number(this.getAttribute('atr')) + 5
             let count2 = Number(this.getAttribute('atr')) - 5
 
-            let allbtns = parant.querySelectorAll('.haka__block')
+
 
             let top = allbtns[count1]
             let bot = allbtns[count2]
@@ -386,18 +417,7 @@ $(document).ready(function () {
             }
           }
 
-          // if (topBlock && (!topBlock.classList.contains('disabled')) && (!(this.getAttribute('atr') == '0')) && (!(this.getAttribute('atr') == '1')) && (!(this.getAttribute('atr') == '2')) && (!(this.getAttribute('atr') == '3')) && (!(this.getAttribute('atr') == '4'))) {
-          //   topBlock.disabled = false
-          // }
-          // if (bottomBlock && (!bottomBlock.classList.contains('disabled')) && (!(this.getAttribute('atr') == '35')) && (!(this.getAttribute('atr') == '36')) && (!(this.getAttribute('atr') == '37')) && (!(this.getAttribute('atr') == '38')) && (!(this.getAttribute('atr') == '39'))) {
-          //   bottomBlock.disabled = false
-          // }
-          // if (rightBlock && (!rightBlock.classList.contains('disabled')) && (!(this.getAttribute('atr') == '4')) && (!(this.getAttribute('atr') == '9')) && (!(this.getAttribute('atr') == '14')) && (!(this.getAttribute('atr') == '19')) && (!(this.getAttribute('atr') == '24')) && (!(this.getAttribute('atr') == '29')) && (!(this.getAttribute('atr') == '34')) && (!(this.getAttribute('atr') == '39'))) {
-          //   rightBlock.disabled = false
-          // }
-          // if (leftBlock && (!leftBlock.classList.contains('disabled')) && (!(this.getAttribute('atr') == '0')) && (!(this.getAttribute('atr') == '5')) && (!(this.getAttribute('atr') == '10')) && (!(this.getAttribute('atr') == '15')) && (!(this.getAttribute('atr') == '20')) && (!(this.getAttribute('atr') == '25')) && (!(this.getAttribute('atr') == '30'))) {
-          //   leftBlock.disabled = false
-          // }
+
 
 
         })
